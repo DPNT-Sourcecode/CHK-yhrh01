@@ -26,18 +26,17 @@ class TestCheckout():
             ("R", 50),
             ("S", 30),
             ("T", 20),
-            ("U", 0),
-            ("", 0),
-            ("", 0),
-            ("", 0),
-            ("", 0),
-            ("", 0),
+            ("U", 40),
+            ("V", 50),
+            ("W", 20),
+            ("X", 90),
+            ("Y", 10),
+            ("Z", 50),
 
         ]
     )
-    def test_single_sku(self):
-        basket = "A"
-        assert CheckoutSolution().checkout(basket) == 50
+    def test_single_sku(self, basket, expected_total):
+        assert CheckoutSolution().checkout(basket) == expected_total
 
     def test_single_sku_with_multiple_count(self):
         basket = "AA"
@@ -47,9 +46,21 @@ class TestCheckout():
         basket = "AB"
         assert CheckoutSolution().checkout(basket) == 80
 
-    def test_skus_with_offer_no_remainder(self):
-        basket = "AAA"
-        assert CheckoutSolution().checkout(basket) == 130
+    @pytest.mark.parametrize(
+        "basket, expected_total",
+        [
+            ("AAA", 130),
+            ("AAAAA", 200),
+            ("BB", 45),
+            ("HHHHH", 45),
+            ("HHHHHHHHHH", 80),
+            ("KK", 150),
+            ("", 0),
+            ("", 0),
+        ]
+    )
+    def test_skus_with_offer_no_remainder(self, basket, expected_total):
+        assert CheckoutSolution().checkout(basket) == expected_total
 
 
     @pytest.mark.parametrize(
@@ -104,3 +115,4 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
