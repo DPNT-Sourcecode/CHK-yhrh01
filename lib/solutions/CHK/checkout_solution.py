@@ -20,10 +20,15 @@ OFFERS = {
     }
 }
 
-def _get_price_for_basket_sku(sku, count):
+OFFER_SKUS = OFFERS.keys()
+
+def _get_regular_price_for_basket_sku(sku, count):
     pass
 
 def _get_offer_price_for_basket_sku(sku, count):
+    pass
+
+def _get_total_price_for_basket_sku(sku, count):
     pass
 
 
@@ -36,7 +41,9 @@ class CheckoutSolution:
             if sku not in KNOWN_SKUS:
                 return -1
             basket_skus[sku] += 1
-        for b
+        total = 0
+        for basket_sku, basket_sku_count in basket_skus.items():
+            total
 
 
 
