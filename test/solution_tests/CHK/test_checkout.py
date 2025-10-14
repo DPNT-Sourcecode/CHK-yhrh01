@@ -8,7 +8,7 @@ class TestCheckout():
         [
             ("A", 50),
             ("B", 30),
-            ("C", 10),
+            ("C", 20),
             ("D", 15),
             ("E", 40),
             ("F", 10),
@@ -110,9 +110,7 @@ class TestCheckout():
             ("FFF", 20),
             ("FFFF", 30),
             ("FFFFFF", 40),
-            ("", 0),
-            ("", 0),
-            ("", 0),
+            ("UUUU", 120),
         ]
     )
     def test_skus_with_self_reduction(self, basket, expected_total):
@@ -122,5 +120,6 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
 
 
