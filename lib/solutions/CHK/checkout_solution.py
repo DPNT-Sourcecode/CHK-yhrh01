@@ -9,6 +9,7 @@ PRICES = {
 
 KNOWN_SKUS = PRICES.keys()
 
+# Ordered list of offers. Offers with a higher count will appear first.
 OFFERS = {
     'A': [
         {
@@ -43,18 +44,13 @@ REDUCTION_OFFERS_SKUS = REDUCTION_OFFERS.keys()
 def _get_total_regular_price_for_basket_sku(sku: str, count: int):
     return PRICES[sku] * count
 
-def _get_total_offer_price_for_basket_sku(sku: str, count: int):
-    bundle_count = count // OFFERS[sku]['count']
-    return bundle_count * OFFERS[sku]['value']
-
-def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int, running_sum: int) -> tuple[int, int]:
+def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) -> tuple[int, int]:
+    running_sum = 0
     for offer in OFFERS[sku][offer]:
         bundle_count = count // offer['count']
         remainder = count  % offer['count']
         if bundle_count == 0:
             continue
-
-        #     return running_sum, remainder
         else:
             running_sum += bundle_count * offer['value']
             count = remainder
@@ -62,8 +58,7 @@ def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int, ru
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
-        remainder = count % OFFERS[sku]['count']
-        offer_price_total = _get_total_offer_price_for_basket_sku(sku, count - remainder)
+        offer_price_total, remainder = _get_total_offer_price_and_remainder_for_basket_sku(sku, count)
         regular_price_total = _get_total_regular_price_for_basket_sku(sku, remainder)
         return offer_price_total + regular_price_total
     return _get_total_regular_price_for_basket_sku(sku, count)
@@ -94,11 +89,3 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
-
-
-
-
-
-
-
-
