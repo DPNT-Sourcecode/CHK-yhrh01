@@ -20,6 +20,14 @@ OFFERS = {
     }
 }
 
+REDUCTION_OFFERS = {
+    'E': {
+        'count': 2,
+        'reduction_sku': 'B'
+        'reduction_count': -1
+    }
+}
+
 OFFER_SKUS = OFFERS.keys()
 
 def _get_total_regular_price_for_basket_sku(sku: str, count: int):
@@ -50,4 +58,5 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
