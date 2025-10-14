@@ -58,7 +58,11 @@ class TestCheckout():
     @pytest.mark.parametrize(
         "basket, expected_total",
         [
-            ("FF", ),
+            ("F", 10),
+            ("FF", 20),
+            ("FFF", 20),
+            ("FFFF", 30),
+            ("FFFFFF", 40),
         ]
     )
     def test_skus_with_self_reduction(self, basket, expected_total):
@@ -68,6 +72,7 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
 
 
 
