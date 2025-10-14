@@ -47,12 +47,19 @@ def _get_total_price_for_basket_sku(sku: str, count: int):
         return offer_price_total + regular_price_total
     return _get_total_regular_price_for_basket_sku(sku, count)
 
+def _apply_reductions(basket_skus: dict[str, int]):
+    to_reduce = defaultdict(int)
+    for sku, count in basket_skus.items():
+        if sku in REDUCTION_OFFERS:
+            bundles = REDUCTION_OFFERS[sku]['count']
+        pass
+
+
 class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus: str):
         basket_skus = defaultdict(int)
-        reductions = defaultdict(int)
         for sku in skus:
             if sku not in KNOWN_SKUS:
                 return -1
