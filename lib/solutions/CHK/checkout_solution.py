@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from lib.solutions.CHK.config import PRICES, OFFERS, OFFER_SKUS, REDUCTION_OFFERS, KNOWN_SKUS
+from .config import PRICES, OFFERS, OFFER_SKUS, REDUCTION_OFFERS, KNOWN_SKUS
 
 def _get_total_regular_price_for_basket_sku(sku: str, count: int):
     return PRICES[sku] * count
@@ -50,5 +50,6 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
 
