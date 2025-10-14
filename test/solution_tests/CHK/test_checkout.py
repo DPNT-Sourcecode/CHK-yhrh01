@@ -1,4 +1,5 @@
 from lib.solutions.CHK.checkout_solution import CheckoutSolution
+import pytest
 
 class TestCheckout():
 
@@ -22,11 +23,17 @@ class TestCheckout():
         basket = "AAAA"
         assert CheckoutSolution().checkout(basket) == 180
 
-    def test_skus_with_several_offer_bundles(self):
-        basket = "AAABB"
-        assert CheckoutSolution().checkout(basket) == 175
-
+    @pytest.mark.parametrize(
+        "basket, expected_total",
+        [
+            ("AAABB", 175),
+            ("AAAAABB", 245),
+        ]
+    )
+    def test_skus_with_several_offer_bundles(self, basket, expected_total):
+        assert CheckoutSolution().checkout(basket) == expected_total
 
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
