@@ -66,28 +66,26 @@ OFFERS = {
             'value': 150
         }
     ],
-    '': [
+    'P': [
         {
-            'count': 0,
-            'value': 0
+            'count': 5,
+            'value': 200
         }
     ],
-    '': [
+    'Q': [
         {
-            'count': 0,
-            'value': 0
+            'count': 3,
+            'value': 80
         }
     ],
-    '': [
+    'V': [
         {
-            'count': 0,
-            'value': 0
-        }
-    ],
-    '': [
+            'count': 3,
+            'value': 130
+        },
         {
-            'count': 0,
-            'value': 0
+            'count': 2,
+            'value': 90
         }
     ],
 }
@@ -104,7 +102,37 @@ REDUCTION_OFFERS = {
         'count': 3,
         'reduction_sku': 'F',
         'reduction_count': -1
-    }
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
+    '': {
+        'count': 0,
+        'reduction_sku': '',
+        'reduction_count': -1
+    },
 }
 
 REDUCTION_OFFERS_SKUS = REDUCTION_OFFERS.keys()
@@ -157,4 +185,5 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
