@@ -46,7 +46,7 @@ def _get_total_regular_price_for_basket_sku(sku: str, count: int):
 
 def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) -> tuple[int, int]:
     running_sum = 0
-    for offer in OFFERS[sku][offer]:
+    for offer in OFFERS[sku]:
         bundle_count = count // offer['count']
         remainder = count  % offer['count']
         if bundle_count == 0:

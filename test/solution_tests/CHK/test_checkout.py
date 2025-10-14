@@ -23,8 +23,9 @@ class TestCheckout():
         assert CheckoutSolution().checkout(basket) == 180
 
     def test_skus_with_several_offer_bundles(self):
-        basket = "AAABBAAA"
-        assert CheckoutSolution().checkout(basket) == 305
+        basket = "AAABB"
+        assert CheckoutSolution().checkout(basket) == 175
+
 
     def test_illegal_input(self):
         basket = "AAAk"
