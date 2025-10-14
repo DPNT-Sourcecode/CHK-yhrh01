@@ -3,6 +3,38 @@ import pytest
 
 class TestCheckout():
 
+    @pytest.mark.parametrize(
+        "basket, expected_total",
+        [
+            ("A", 50),
+            ("B", 30),
+            ("C", 10),
+            ("D", 15),
+            ("E", 40),
+            ("F", 10),
+            ("G", 20),
+            ("H", 10),
+            ("I", 35),
+            ("J", 60),
+            ("K", 80),
+            ("L", 90),
+            ("M", 15),
+            ("N", 40),
+            ("O", 10),
+            ("P", 50),
+            ("Q", 30),
+            ("R", 50),
+            ("S", 30),
+            ("T", 20),
+            ("U", 0),
+            ("", 0),
+            ("", 0),
+            ("", 0),
+            ("", 0),
+            ("", 0),
+
+        ]
+    )
     def test_single_sku(self):
         basket = "A"
         assert CheckoutSolution().checkout(basket) == 50
