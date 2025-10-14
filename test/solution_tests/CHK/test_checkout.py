@@ -55,8 +55,10 @@ class TestCheckout():
             ("HHHHH", 45),
             ("HHHHHHHHHH", 80),
             ("KK", 150),
-            ("", 0),
-            ("", 0),
+            ("PPPPP", 200),
+            ("QQQ", 80),
+            ("VV", 90),
+            ("VVV", 130),
         ]
     )
     def test_skus_with_offer_no_remainder(self, basket, expected_total):
@@ -93,6 +95,8 @@ class TestCheckout():
             ("EE", 80),
             ("BBEE", 110),
             ("BBEEEE", 160),
+            ("MNNN", 120),
+            ("QRRR", 150),
         ]
     )
     def test_skus_with_reduction(self, basket, expected_total):
@@ -106,6 +110,9 @@ class TestCheckout():
             ("FFF", 20),
             ("FFFF", 30),
             ("FFFFFF", 40),
+            ("", 0),
+            ("", 0),
+            ("", 0),
         ]
     )
     def test_skus_with_self_reduction(self, basket, expected_total):
@@ -115,4 +122,5 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
 
