@@ -4,4 +4,4 @@ class TestHello():
     def test_hello(self):
         names = ["David", "Sara", "Jane"]
         for name in names:
-            assert HelloSolution().hello(name) == f"Hello, World!"
+            assert HelloSolution().hello(name) == f"Hello, {name}!"
