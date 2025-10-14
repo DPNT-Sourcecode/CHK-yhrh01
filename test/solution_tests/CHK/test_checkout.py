@@ -26,7 +26,7 @@ class TestCheckout():
             ("AAAA", 180),
             ("AAAAAA", 250),
             ("AAAAAAAAAAA", 450),
-            ("AAAAAAAAAAAAAA", 450),
+            ("AAAAAAAAAAAAAA", 580),
         ]
     )
     def test_skus_with_offer_with_remainder(self, basket, expected_total):
@@ -42,6 +42,19 @@ class TestCheckout():
     )
     def test_skus_with_several_offer_bundles(self, basket, expected_total):
         assert CheckoutSolution().checkout(basket) == expected_total
+
+    @pytest.mark.parametrize(
+        "basket, expected_total",
+        [
+            ("BEE", 80),
+            ("EE", 80),
+            ("BBEE", 110),
+            ("BBEEEE", 160),
+        ]
+    )
+    def test_skus_with_reduction(self, basket, expected_total):
+        assert CheckoutSolution().checkout(basket) == expected_total
+
 
     def test_illegal_input(self):
         basket = "AAAk"
