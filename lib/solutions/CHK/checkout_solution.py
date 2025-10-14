@@ -5,6 +5,8 @@ PRICES = {
     'D': 15
 }
 
+KNOWN_SKUS = PRICES.keys()
+
 OFFERS = {
     'A': {
         'count': 3,
@@ -27,7 +29,12 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
+        basket_skus = {}
         for sku in skus:
+            if sku not in KNOWN_SKUS:
+                return -1
+            bas            
             pass
+
 
 
