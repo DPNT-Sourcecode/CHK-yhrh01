@@ -21,14 +21,12 @@ PRICES = {
     'R': 50,
     'S': 30,
     'T': 20,
-    '': 0,
-    '': 0,
-    '': 0,
-    '': 0,
-    '': 0,
-    '': 0,
-    '': 0,
-    '': 0,
+    'U': 40,
+    'V': 50,
+    'W': 20,
+    'X': 90,
+    'Y': 10,
+    'Z': 50,
     
 }
 
@@ -51,7 +49,47 @@ OFFERS = {
             'count': 2,
             'value': 45
         }
-    ]
+    ],
+    'H': [
+        {
+            'count': 10,
+            'value': 80
+        },
+        {
+            'count': 5,
+            'value': 45
+        }
+    ],
+    'K': [
+        {
+            'count': 2,
+            'value': 150
+        }
+    ],
+    '': [
+        {
+            'count': 0,
+            'value': 0
+        }
+    ],
+    '': [
+        {
+            'count': 0,
+            'value': 0
+        }
+    ],
+    '': [
+        {
+            'count': 0,
+            'value': 0
+        }
+    ],
+    '': [
+        {
+            'count': 0,
+            'value': 0
+        }
+    ],
 }
 
 OFFER_SKUS = OFFERS.keys()
@@ -119,3 +157,4 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
