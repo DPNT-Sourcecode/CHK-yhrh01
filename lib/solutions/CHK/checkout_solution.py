@@ -47,7 +47,11 @@ def _get_total_offer_price_for_basket_sku(sku: str, count: int):
     bundle_count = count // OFFERS[sku]['count']
     return bundle_count * OFFERS[sku]['value']
 
-def _get_total_offer_price
+def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) -> tuple[int, int]:
+    for offer in OFFER_SKUS[offer]:
+        remainder = offer['']
+        pass
+
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
@@ -83,6 +87,7 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
 
 
