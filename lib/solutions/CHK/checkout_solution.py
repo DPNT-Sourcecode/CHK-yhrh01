@@ -96,4 +96,3 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
-
