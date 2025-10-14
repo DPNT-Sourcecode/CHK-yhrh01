@@ -7,13 +7,27 @@ PRICES = {
 
 OFFERS = {
     'A': {
-        ''
+        'count': 3,
+        'value': 130
+    },
+    'B': {
+        'count': 2,
+        'value': 45
     }
 }
+
+def get_price_for_sku():
+    pass
+
+def get_offer_price_for_sku():
+    pass
+
 
 class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        raise NotImplementedError()
+        for sku in skus:
+            pass
+
 
