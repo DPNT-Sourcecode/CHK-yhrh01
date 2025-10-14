@@ -29,8 +29,11 @@ def _get_offer_price_for_basket_sku(sku: str, count: int):
     pass
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
-    if sku in OFFER_SKUS
-
+    if sku in OFFER_SKUS:
+        remainder = count % OFFERS[sku]['count']
+        offer_price = _get_offer_price_for_basket_sku(sku, count - remainder)
+        regular_price = _get_regular_price_for_basket_sku(sku, remainder)
+        return regular_price + 
 
 class CheckoutSolution:
 
