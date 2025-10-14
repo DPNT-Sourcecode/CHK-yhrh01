@@ -10,14 +10,22 @@ PRICES = {
 KNOWN_SKUS = PRICES.keys()
 
 OFFERS = {
-    'A': [{
-        'count': 3,
-        'value': 130
-    }],
-    'B': {
-        'count': 2,
-        'value': 45
-    }
+    'A': [
+        {
+            'count': 5,
+            'value': 200
+        },
+        {
+            'count': 3,
+            'value': 130
+        },
+    ],
+    'B': [
+        {
+            'count': 2,
+            'value': 45
+        }
+    ]
 }
 
 OFFER_SKUS = OFFERS.keys()
@@ -38,6 +46,8 @@ def _get_total_regular_price_for_basket_sku(sku: str, count: int):
 def _get_total_offer_price_for_basket_sku(sku: str, count: int):
     bundle_count = count // OFFERS[sku]['count']
     return bundle_count * OFFERS[sku]['value']
+
+def _get_total_offer_price
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
@@ -68,9 +78,11 @@ class CheckoutSolution:
             if sku not in KNOWN_SKUS:
                 return -1
             basket_skus[sku] += 1
+        _apply_reductions(basket_skus)
         total = 0
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
 
