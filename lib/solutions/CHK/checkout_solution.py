@@ -51,14 +51,14 @@ def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int, ru
     for offer in OFFERS[sku][offer]:
         bundle_count = count // offer['count']
         remainder = count  % offer['count']
-        
-
         if bundle_count == 0:
-            return running_sum, remainder
+            continue
+
+        #     return running_sum, remainder
         else:
             running_sum += bundle_count * offer['value']
-            return _get_total_offer_price_and_remainder_for_basket_sku(sku, remainder, running_sum)
-
+            count = remainder
+    return running_sum, count
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
@@ -94,6 +94,7 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
 
 
