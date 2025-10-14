@@ -26,7 +26,8 @@ def _get_total_regular_price_for_basket_sku(sku: str, count: int):
     return PRICES[sku] * count
 
 def _get_total_offer_price_for_basket_sku(sku: str, count: int):
-    return 
+    bundle_count = count // OFFERS[sku]['count']
+    return bundle_count * OFFERS[sku]['value']
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
@@ -48,5 +49,5 @@ class CheckoutSolution:
         total = 0
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
-        
+        return total        
 
