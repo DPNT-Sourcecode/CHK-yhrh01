@@ -22,18 +22,19 @@ OFFERS = {
 
 OFFER_SKUS = OFFERS.keys()
 
-def _get_regular_price_for_basket_sku(sku: str, count: int):
-    pass
+def _get_total_regular_price_for_basket_sku(sku: str, count: int):
+    return PRICES[sku] * count
 
-def _get_offer_price_for_basket_sku(sku: str, count: int):
-    pass
+def _get_total_offer_price_for_basket_sku(sku: str, count: int):
+    return 
 
 def _get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
         remainder = count % OFFERS[sku]['count']
-        offer_price = _get_offer_price_for_basket_sku(sku, count - remainder)
-        regular_price = _get_regular_price_for_basket_sku(sku, remainder)
-        return regular_price + 
+        offer_price_total = _get_total_offer_price_for_basket_sku(sku, count - remainder)
+        regular_price_total = _get_total_regular_price_for_basket_sku(sku, remainder)
+        return offer_price_total + regular_price_total
+    return _get_total_regular_price_for_basket_sku(sku, count)
 
 class CheckoutSolution:
 
@@ -48,3 +49,4 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         
+
