@@ -10,10 +10,10 @@ PRICES = {
 KNOWN_SKUS = PRICES.keys()
 
 OFFERS = {
-    'A': {
+    'A': [{
         'count': 3,
         'value': 130
-    },
+    }],
     'B': {
         'count': 2,
         'value': 45
@@ -53,9 +53,11 @@ def _apply_reductions(basket_skus: dict[str, int]):
         if sku in REDUCTION_OFFERS:
             bundles = count // REDUCTION_OFFERS[sku]['count']
             sku_to_reduce = REDUCTION_OFFERS[sku]['reduction_sku']
-            to_reduce[sku_to_reduce] = bundles * REDUCTION_OFFERS[sku]
-        pass
-
+            to_reduce[sku_to_reduce] = bundles * REDUCTION_OFFERS[sku]['reduction_count']
+    for sku, reduction_count in to_reduce.items():
+        basket_skus[sku] += reduction_count
+        if basket_skus[sku] <= 0:
+            del basket_skus[sku]
 
 class CheckoutSolution:
 
@@ -70,4 +72,5 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
