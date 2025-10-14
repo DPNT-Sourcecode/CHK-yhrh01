@@ -5,7 +5,8 @@ PRICES = {
     'B': 30,
     'C': 20,
     'D': 15,
-    'E': 40
+    'E': 40,
+    'F': 10
 }
 
 KNOWN_SKUS = PRICES.keys()
@@ -36,6 +37,11 @@ REDUCTION_OFFERS = {
     'E': {
         'count': 2,
         'reduction_sku': 'B',
+        'reduction_count': -1
+    },
+    'F': {
+        'count': 3,
+        'reduction_sku': 'F',
         'reduction_count': -1
     }
 }
@@ -90,3 +96,4 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
