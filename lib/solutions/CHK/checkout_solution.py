@@ -25,7 +25,9 @@ def _apply_group_offer(offer: dict, basket: dict):
     reduction_count = offer_skus_in_basket_count - offer_skus_in_basket_count % offer['count']
     while reduction_count > 0:
         for offer_sku in offer_skus:
-            
+            if basket[offer_sku] > 0:
+                basket[offer_sku] -= 1
+
     # Reduce offer skus in basket from highest cost to lowest cost
 
     # return total value of group reductions
