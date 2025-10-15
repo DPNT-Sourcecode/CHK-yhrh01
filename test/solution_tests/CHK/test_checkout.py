@@ -16,7 +16,7 @@ class TestCheckout():
             ("H", 10),
             ("I", 35),
             ("J", 60),
-            ("K", 80),
+            ("K", 70),
             ("L", 90),
             ("M", 15),
             ("N", 40),
@@ -24,14 +24,14 @@ class TestCheckout():
             ("P", 50),
             ("Q", 30),
             ("R", 50),
-            ("S", 30),
+            ("S", 20),
             ("T", 20),
             ("U", 40),
             ("V", 50),
             ("W", 20),
-            ("X", 90),
-            ("Y", 10),
-            ("Z", 50),
+            ("X", 17),
+            ("Y", 20),
+            ("Z", 21),
 
         ]
     )
@@ -115,6 +115,22 @@ class TestCheckout():
     )
     def test_skus_with_self_reduction(self, basket, expected_total):
         assert CheckoutSolution().checkout(basket) == expected_total
+
+
+    @pytest.mark.parametrize(
+        "basket, expected_total",
+        [
+            ("STX", 45),
+            ("STXYZS", 90),
+            ("SSTX", 65),
+            ("FFFF", 30),
+            ("FFFFFF", 40),
+            ("UUUU", 120),
+        ]
+    )
+    def test_skus_with_group_reduction(self, basket, expected_total):
+        assert CheckoutSolution().checkout(basket) == expected_total
+
 
 
     def test_illegal_input(self):
