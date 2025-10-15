@@ -121,6 +121,7 @@ class TestCheckout():
         "basket, expected_total",
         [
             ("STX", 45),
+            ("STXA", 95),
             ("STXYZS", 90),
             ("SSTX", 65),
         ]
@@ -133,3 +134,4 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+

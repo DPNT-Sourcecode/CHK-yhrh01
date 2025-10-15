@@ -18,7 +18,6 @@ def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) ->
     return running_sum, count
 
 def _apply_group_offer(offer: dict, basket: dict) -> int:
-    print("applying group offer")
     offer_skus = offer['skus']
     offer_skus_in_basket_count = sum(basket[sku] for sku in basket if sku in offer_skus)
     group_batches = offer_skus_in_basket_count // offer['count']
@@ -69,4 +68,5 @@ class CheckoutSolution:
         for basket_sku, basket_sku_count in basket_skus.items():
             total += get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 

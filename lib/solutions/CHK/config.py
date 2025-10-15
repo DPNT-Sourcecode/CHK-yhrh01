@@ -120,10 +120,13 @@ REDUCTION_OFFERS = {
 
 REDUCTION_OFFERS_SKUS = REDUCTION_OFFERS.keys()
 
-GROUP_OFFERS = []
-
 GROUP_OFFER_1 = {
     'skus': sorted(['S', 'T', 'X', 'Y', 'Z'], key=lambda s: PRICES[s], reverse=True),
     'count': 3,
     'value': 45
 }
+GROUP_OFFERS = [
+    GROUP_OFFER_1
+]
+
+
