@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from .config import PRICES, OFFERS, OFFER_SKUS, REDUCTION_OFFERS, KNOWN_SKUS
+from .config import GROUP_OFFERS, PRICES, OFFERS, OFFER_SKUS, REDUCTION_OFFERS, KNOWN_SKUS
 
 def _get_total_regular_price_for_basket_sku(sku: str, count: int):
     return PRICES[sku] * count
@@ -24,7 +24,7 @@ def _get_total_price_for_basket_sku(sku: str, count: int):
         return offer_price_total + regular_price_total
     return _get_total_regular_price_for_basket_sku(sku, count)
 
-def _apply_reductions(basket_skus: dict[str, int]):
+def apply_reductions(basket_skus: dict[str, int]):
     to_reduce = {}
     for sku, count in basket_skus.items():
         if sku in REDUCTION_OFFERS:
@@ -36,6 +36,10 @@ def _apply_reductions(basket_skus: dict[str, int]):
         if basket_skus[sku] <= 0:
             del basket_skus[sku]
 
+def _apply_group_offers():
+    for offer in GROUP_OFFERS
+    pass
+
 class CheckoutSolution:
 
     # skus = unicode string
@@ -45,7 +49,8 @@ class CheckoutSolution:
             if sku not in KNOWN_SKUS:
                 return -1
             basket_skus[sku] += 1
-        _apply_reductions(basket_skus)
+        apply_reductions(basket_skus)
+        _apply_group_offers(basket_skus)
         total = 0
         for basket_sku, basket_sku_count in basket_skus.items():
             total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
