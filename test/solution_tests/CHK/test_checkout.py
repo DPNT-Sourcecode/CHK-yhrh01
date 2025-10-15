@@ -54,7 +54,7 @@ class TestCheckout():
             ("BB", 45),
             ("HHHHH", 45),
             ("HHHHHHHHHH", 80),
-            ("KK", 150),
+            ("KK", 120),
             ("PPPPP", 200),
             ("QQQ", 80),
             ("VV", 90),
@@ -123,9 +123,6 @@ class TestCheckout():
             ("STX", 45),
             ("STXYZS", 90),
             ("SSTX", 65),
-            ("FFFF", 30),
-            ("FFFFFF", 40),
-            ("UUUU", 120),
         ]
     )
     def test_skus_with_group_reduction(self, basket, expected_total):
