@@ -123,7 +123,7 @@ REDUCTION_OFFERS_SKUS = REDUCTION_OFFERS.keys()
 GROUP_OFFERS = []
 
 GROUP_OFFER_1 = {
-    'skus': set('S', 'T', 'X', 'Y', 'Z'),
+    'skus': set(['S', 'T', 'X', 'Y', 'Z']),
     'count': 3,
     'value': 45
 }
