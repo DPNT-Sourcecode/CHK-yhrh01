@@ -17,7 +17,14 @@ def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) ->
             count = remainder
     return running_sum, count
 
-def _get_total_price_for_basket_sku(sku: str, count: int):
+def _apply_group_offer(offer: dict, basket: dict):
+    offer_skus = offer['skus']
+    # Get count of offer skus in basket
+    # Reduce 
+    pass
+
+
+def get_total_price_for_basket_sku(sku: str, count: int):
     if sku in OFFER_SKUS:
         offer_price_total, remainder = _get_total_offer_price_and_remainder_for_basket_sku(sku, count)
         regular_price_total = _get_total_regular_price_for_basket_sku(sku, remainder)
@@ -36,9 +43,9 @@ def apply_reductions(basket_skus: dict[str, int]):
         if basket_skus[sku] <= 0:
             del basket_skus[sku]
 
-def _apply_group_offers():
-    for offer in GROUP_OFFERS
-    pass
+def apply_group_offers(basket: dict):
+    for offer in GROUP_OFFERS:
+        _apply_group_offer(offer)
 
 class CheckoutSolution:
 
@@ -50,8 +57,8 @@ class CheckoutSolution:
                 return -1
             basket_skus[sku] += 1
         apply_reductions(basket_skus)
-        _apply_group_offers(basket_skus)
+        apply_group_offers(basket_skus)
         total = 0
         for basket_sku, basket_sku_count in basket_skus.items():
-            total += _get_total_price_for_basket_sku(basket_sku, basket_sku_count)
+            total += get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
