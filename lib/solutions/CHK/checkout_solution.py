@@ -20,7 +20,8 @@ def _get_total_offer_price_and_remainder_for_basket_sku(sku: str, count: int) ->
 def _apply_group_offer(offer: dict, basket: dict):
     offer_skus = offer['skus']
     # Get count of offer skus in basket
-    # Reduce 
+    offer_skus_in_basket_count = sum()
+    # Reduce offer skus in basket from highest cost to lowest cost
     pass
 
 
