@@ -22,6 +22,7 @@ def _apply_group_offer(offer: dict, basket: dict) -> int:
     offer_skus_in_basket_count = sum(basket[sku] for sku in basket if sku in offer_skus)
     group_batches = offer_skus_in_basket_count // offer['count']
     reduction_count = offer_skus_in_basket_count - offer_skus_in_basket_count % offer['count']
+    print(reduction_count)
     while reduction_count > 0:
         for offer_sku in offer_skus:
             if basket.get(offer_sku):
@@ -63,10 +64,13 @@ class CheckoutSolution:
                 return -1
             basket_skus[sku] += 1
         apply_reductions(basket_skus)
+        print(basket_skus)
         group_offers_total = apply_group_offers(basket_skus)
+        print(basket_skus)
         total = group_offers_total
         for basket_sku, basket_sku_count in basket_skus.items():
             total += get_total_price_for_basket_sku(basket_sku, basket_sku_count)
         return total        
+
 
 

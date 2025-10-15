@@ -124,6 +124,7 @@ class TestCheckout():
             ("STXA", 95),
             ("STXYZS", 90),
             ("SSTX", 65),
+            ("ZSTX", 65),
         ]
     )
     def test_skus_with_group_reduction(self, basket, expected_total):
@@ -134,4 +135,5 @@ class TestCheckout():
     def test_illegal_input(self):
         basket = "AAAk"
         assert CheckoutSolution().checkout(basket) == -1
+
 
